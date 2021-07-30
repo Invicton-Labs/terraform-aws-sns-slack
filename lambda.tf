@@ -30,7 +30,7 @@ data "aws_iam_policy_document" "lambda" {
 // Create the Lambda that will post to Slack
 module "slack_lambda" {
   source                   = "Invicton-Labs/lambda-set/aws"
-  version                  = "0.4.0"
+  version                  = "0.4.1"
   edge                     = false
   source_directory         = var.lambda_filename == null ? "${path.module}/lambda-poster" : null
   archive_output_directory = var.lambda_filename == null ? "${path.module}/archives/" : null
