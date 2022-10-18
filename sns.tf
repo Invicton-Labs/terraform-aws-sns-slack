@@ -1,6 +1,6 @@
 module "success_logs" {
   source  = "Invicton-Labs/log-group/aws"
-  version = "0.3.0"
+  version = "~>0.4.0"
 
   log_group_config = {
     name              = "sns/${data.aws_region.current.name}/${data.aws_caller_identity.current.account_id}/${local.sns_sqs_name_fifo}"
@@ -12,7 +12,7 @@ module "success_logs" {
 
 module "failure_logs" {
   source  = "Invicton-Labs/log-group/aws"
-  version = "0.3.0"
+  version = "~>0.4.0"
 
   log_group_config = {
     name              = "sns/${data.aws_region.current.name}/${data.aws_caller_identity.current.account_id}/${local.sns_sqs_name_fifo}/Failure"
