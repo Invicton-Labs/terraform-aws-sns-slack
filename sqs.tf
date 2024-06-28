@@ -1,6 +1,8 @@
 // Add to the policy to enable the SNS topic to send to it
 data "aws_iam_policy_document" "kms_sqs" {
-  source_json = var.sqs_kms_resource_policy
+  source_policy_documents = [
+    var.sqs_kms_resource_policy
+  ]
   statement {
     sid = "__Administration"
     actions = [
@@ -53,8 +55,10 @@ resource "aws_sqs_queue" "slack" {
 
 // Add to the policy to enable the SNS topic to send to it
 data "aws_iam_policy_document" "sqs" {
-  count       = var.fifo ? 1 : 0
-  source_json = var.sqs_queue_policy
+  count = var.fifo ? 1 : 0
+  source_policy_documents = [
+    var.sqs_queue_policy
+  ]
   statement {
     sid = "__SNSSubscription"
     actions = [

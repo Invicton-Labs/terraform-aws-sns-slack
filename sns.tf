@@ -59,7 +59,9 @@ resource "aws_iam_role_policy" "sns_failure" {
 
 // Add to the policy to enable the SNS topic to send to it
 data "aws_iam_policy_document" "kms_sns" {
-  source_json = var.sns_kms_resource_policy
+  source_policy_documents = [
+    var.sns_kms_resource_policy
+  ]
   // Allow the account the ability to administer the key
   statement {
     sid = "__Administration"
